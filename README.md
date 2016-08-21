@@ -6,13 +6,14 @@ _UNDER DEVELOPMENT_
 
 **GET /**
 + Shows unauthenticated users all polls.
-+ Shows authenticated users a choice of all polls, filterable to personal polls
++ Shows authenticated users a choice of all polls, filterable to personal polls?
 + Links to 
   + /sign-up 
   + /sign-in
   + /results
   + /poll _(Auth only)_
   + /vote _(Auth only)_
+  + /mypolls _(Auth only)_
 
 **GET /sign-up**
 + Shows sign up form
@@ -39,7 +40,7 @@ _UNDER DEVELOPMENT_
 + Creates persistent token/cookie if remember me is _true_
 + Redirects to / (or whichever page passed user to sign-in/up)
 
-**GET /vote** _(Auth only)_
+**GET /vote/:POLLID** _(Auth only)_
 + Shows poll and options
 + Should not allow repeat votes
 + Posts to /vote
@@ -52,7 +53,7 @@ _UNDER DEVELOPMENT_
 + Handles user's vote
 + Redirects to /results
 
-**GET /poll** _(Auth only)_
+**GET /poll/:POLLID** _(Auth only)_
 + Form to create new poll
 + Posts to /poll
 + Unauthenticated users redirect to /sign-in
@@ -63,10 +64,13 @@ _UNDER DEVELOPMENT_
 + Handles new poll creation
 + Redirects to /vote
 
-**GET /results**
+**GET /results/:POLLID**
 + Shows results bar chart for chosen poll
 + Links to
   + /
   + /sign-in
   + /sign-up
   + /vote
+
+**GET /mypolls**
++ 
