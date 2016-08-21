@@ -1,0 +1,24 @@
+{
+  "name": "voting-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacksonBates/voting-app.git"
+  },
+  "author": "Jackson Bates",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JacksonBates/voting-app/issues"
+  },
+  "homepage": "https://github.com/JacksonBates/voting-app#readme",
+  "dependencies": {
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.7"
+  }
+}
