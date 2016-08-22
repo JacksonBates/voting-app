@@ -6,7 +6,7 @@ var app = express();
 var bodyParser = require('body-parser');
 
 var mongoUserPsw = process.env.MONGO_USER_PSW;
-var url = 'mongodb://jacksonbates:mongoDBnut$@ds013206.mlab.com:13206/pollz';
+var url = 'mongodb://' + mongoUserPsw + '@ds013206.mlab.com:13206/pollz';
 
 mongo.connect( url, function( err, db ) {
   if ( err ) {
