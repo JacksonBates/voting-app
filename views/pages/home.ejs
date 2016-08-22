@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+  </head>
+  <body>
+    <div class='container'>
+      <div class='poll-list'>
+        <h1>Pollz</h1>
+        
+        <% for( var i = 0; i < docs.length; i++ ) { %>
+        <div><%= docs[i].poll %></div>
+        <% } %>
+
+      </div>
+    </div>
+
+    <% include ../partials/scripts.ejs %>
+  </body>
+</html>
