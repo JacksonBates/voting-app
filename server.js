@@ -32,12 +32,14 @@ mongo.connect( url, function( err, db ) {
     // TODO: email setup (has to be changed)
     var yourEmail = 'malgalin@gmail.com';
     var yourPwd = process.env.EMAIL_PASSWORD;
+    console.log(yourPwd);
     var yourSmtp = 'smtp.gmail.com';
     var smtpServer  = email.server.connect({
       user:    yourEmail, 
       password: yourPwd, 
       host:    yourSmtp, 
-      ssl:     false
+      port: '587',
+      tls:     true
     });
 
     // TODO: MongoDB setup (given default can be used)
