@@ -7,7 +7,7 @@ var smtpServer  = email.server.connect({
   user:    yourEmail, 
   password: yourPwd, 
   host:    yourSmtp, 
-  ssl:     true
+  ssl:     false
 });
 
 smtpServer.send({
