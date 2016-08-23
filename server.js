@@ -32,15 +32,14 @@ mongo.connect( url, function( err, db ) {
 
     // C&P from example pswless...
     // TODO: email setup (has to be changed)
-    var yourEmail = 'malgalin@gmail.com';
-    var yourPwd = process.env.EMAIL_PASSWORD;
+    var yourEmail = 'tokendelivery.pollz@gmail.com';
+    var yourPwd = 'ca44866e6f2ff5a4d95958472228fc92b63ca8645f57687570aa73806cde8a38';
     var yourSmtp = 'smtp.gmail.com';
     var smtpServer  = email.server.connect({
       user:    yourEmail, 
       password: yourPwd, 
       host:    yourSmtp, 
-      port: '587',
-      tls:     true
+      ssl:     true
     });
 
     // TODO: MongoDB setup (given default can be used)
