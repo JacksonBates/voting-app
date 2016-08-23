@@ -37,7 +37,7 @@ mongo.connect( url, function( err, db ) {
       user:    yourEmail, 
       password: yourPwd, 
       host:    yourSmtp, 
-      ssl:     true
+      ssl:     false
     });
 
     // TODO: MongoDB setup (given default can be used)
