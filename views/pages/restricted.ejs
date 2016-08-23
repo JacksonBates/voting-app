@@ -6,15 +6,16 @@
   <body>
     <% include ../partials/navbar.ejs %>
     <div class='container'>
-      <div class='poll-list'>
-               
-        <% for( var i = 0; i < docs.length; i++ ) { %>
-        <div><%= docs[i].poll %></div>
-        <% } %>
-
-      </div>
+      <p>
+      This page is only accessible for authenticated users! Psssss... This is a secret!
+      </p>
+      <ul>
+        <li>
+          <a href='/'>Back to homepage</a>
+        </li>
+      </ul>
+      </p>
     </div>
-
     <% include ../partials/scripts.ejs %>
   </body>
 </html>

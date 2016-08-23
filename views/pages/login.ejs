@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+  </head>
+  <body>
+    <% include ../partials/navbar.ejs %>
+    <div class='container'>
+      <p>
+      <form action="/sendtoken" method="POST">
+        Email:
+        <br><input name="user" type="text">
+        <br><input type="submit" value="Login / Register">
+      </form>
+      </p>
+      <ul>
+        <li>
+          <a href='/'>Back to homepage</a>
+        </li>
+        <li>
+          <a href='/restricted'>Restricted page</a>
+        </li>
+      </ul>
+    </div>
+    <% include ../partials/scripts.ejs %>
+</body>

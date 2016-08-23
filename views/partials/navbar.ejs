@@ -1,0 +1,13 @@
+<nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Pollz</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if(user) { %>
+        <li><%= user %> | <a href="/logout">logout</a></li>
+        <li><a href="/restricted">New Poll</a></li>
+        <% } else { %>
+        <li><a href="/login">Login</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>

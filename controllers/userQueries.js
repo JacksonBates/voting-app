@@ -12,7 +12,7 @@ module.exports = {
       if (err) {
         console.log( err );
       } else {
-        res.render( 'pages/home', { docs: docs } );
+        res.render( 'pages/home', { docs: docs, user: req.user } );
       }
     });
   }
