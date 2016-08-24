@@ -21,7 +21,7 @@
     </ul>
     <!-- Copy pasta the charts -->
 
-    <canvas id="myChart" width="400" height="400"></canvas>
+    <canvas id="myChart" width="400" height="200"></canvas>
     <script>
     <% // ejs to wrangle the data for the chart
     var optionsArray = [];
@@ -65,7 +65,8 @@
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero:true
+                        beginAtZero:true,
+                        stepSize: 1
                     }
                 }]
             }
