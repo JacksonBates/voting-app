@@ -1,5 +1,3 @@
-//require( 'dotenv' ).config();
-
 var mongodb = require( 'mongodb' );
 var mongo = mongodb.MongoClient;
 var path = require( 'path' );
@@ -32,15 +30,15 @@ mongo.connect( url, function( err, db ) {
 
     // C&P from example pswless...
     // TODO: email setup (has to be changed)
-    var yourEmail = 'malgalin@gmail.com';
-    var yourPwd = process.env.EMAIL_PASSWORD;
-    var yourSmtp = 'smtp.gmail.com';
+    var yourEmail = 'tokendelivery.pollz@outlook.com';
+    var yourPwd = 'tokendeliveryPassword';
+    var yourSmtp = 'smtp-mail.outlook.com';
     var smtpServer  = email.server.connect({
       user:    yourEmail, 
-      password: yourPwd, 
+      password: yourPwd,
+      timeout: 60000, 
       host:    yourSmtp, 
-      port: '587',
-      tls:     true
+      tls:     {ciphers: "SSLv3"}
     });
 
     // TODO: MongoDB setup (given default can be used)
@@ -86,7 +84,7 @@ mongo.connect( url, function( err, db ) {
 
     app.use( '/', require( './routes' ));
   }
-  app.set( 'port', ( process.env.PORT || 5000 ));
+  app.set( 'port', ( 5000 ));
   app.set( 'views', path.join( __dirname, '/views' ));
   app.set( 'view engine', 'ejs' );
   
