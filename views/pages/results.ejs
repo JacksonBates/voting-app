@@ -10,18 +10,12 @@
     <% var trimmedUserName = result.creator.replace(/[@].*/, '');
        var d = new Date(result.createdTime) %>
     <br><br>
-    <p>id: <%= result._id %></p>
-    <p>poll: <%= result.poll %></p>
-    <p>creator: <%= trimmedUserName %></p>
-    <p>created time: <%= d.toDateString() %></p>
-    <ul>
-    <% for (var i = 0; i < result.options.length; i++) { %>
-      <li>Option: <%= result.options[i] %> | <%= result.voteCount[i] %></li>
-    <% } %>
-    </ul>
+    <h1 class="center-align" id="poll-title"><%= result.poll %></h1>
+    <cite class="right"><b>Asker: </b><%= trimmedUserName %>, <time><%= d.toDateString() %></time></cite> 
+
     <!-- Copy pasta the charts -->
 
-    <canvas id="myChart" width="400" height="200"></canvas>
+    <canvas id="myChart" width="250" height="100"></canvas>
     <script>
     <% // ejs to wrangle the data for the chart
     var optionsArray = [];

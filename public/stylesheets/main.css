@@ -2,6 +2,11 @@
   margin-left: 10px;
 }
 
+#poll-title {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
 .poll-list-item {
   padding: 5px;
 }
