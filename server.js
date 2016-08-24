@@ -1,3 +1,4 @@
+require( 'dotenv' ).config();
 var mongodb = require( 'mongodb' );
 var mongo = mongodb.MongoClient;
 var path = require( 'path' );
@@ -31,7 +32,7 @@ mongo.connect( url, function( err, db ) {
     // C&P from example pswless...
     // TODO: email setup (has to be changed)
     var yourEmail = 'tokendelivery.pollz@outlook.com';
-    var yourPwd = 'tokendeliveryPassword';
+    var yourPwd = process.env.OUTLOOK_PASSWORD;
     var yourSmtp = 'smtp-mail.outlook.com';
     var smtpServer  = email.server.connect({
       user:    yourEmail, 

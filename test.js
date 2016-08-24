@@ -1,1 +1,5 @@
-console.log(process.env.EMAIL_PASSWORD.length);
+var dotenv = require('dotenv').config();
+
+dotenv;
+
+console.log(process.env.TEST_STRING);
