@@ -84,7 +84,7 @@ mongo.connect( url, function( err, db ) {
 
     app.use( '/', require( './routes' ));
   }
-  app.set( 'port', ( 5000 ));
+  app.set( 'port', ( process.env.PORT || 5000 ));
   app.set( 'views', path.join( __dirname, '/views' ));
   app.set( 'view engine', 'ejs' );
   
