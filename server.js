@@ -1,4 +1,4 @@
-//require( 'dotenv' ).config();
+require( 'dotenv' ).config();
 var mongodb = require( 'mongodb' );
 var mongo = mongodb.MongoClient;
 var path = require( 'path' );

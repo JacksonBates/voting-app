@@ -8,37 +8,29 @@ _UNDER DEVELOPMENT_
 + Shows unauthenticated users all polls.
 + Shows authenticated users a choice of all polls, filterable to personal polls?
 + Links to 
-  + /sign-up 
-  + /sign-in
+  + /login
   + /results
+  + /logout _(Auth only)_
   + /poll _(Auth only)_
   + /vote _(Auth only)_
   + /mypolls _(Auth only)_
 
-**GET /sign-up**
-+ Shows sign up form
-  + Form posts to _/sign-up_
+**GET /login**
++ Shows login form
+  + Form posts to _/sendtoken_
 + Explains passwordless auth, directs users to use real email
 + Links to
   + /
-  + /sign-in
+  + /login (?)
 
-**POST /sign-up**
-+ Handles sign-up form
-+ Redirects to /sign-in 
+**POST /sendtoken**
++ Handles sign-up form (passwordless does the heavy lifting here)
++ Redirects to /sent
 
-**GET /sign-in**
+**GET /sent**
 + Explains requirement to access email for one-time token
-+ Shows sign in form, with a remember me checkbox
-  + Form posts to /sign-in
 + Links to
   + /
-  + /sign-up
-
-**POST /sign-in**
-+ Handles sign in form
-+ Creates persistent token/cookie if remember me is _true_
-+ Redirects to / (or whichever page passed user to sign-in/up)
 
 **GET /vote/:POLLID** _(Auth only)_
 + Shows poll and options
