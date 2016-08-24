@@ -18,6 +18,7 @@
   "homepage": "https://github.com/JacksonBates/voting-app#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "chart.js": "^2.2.1",
     "cookie-parser": "^1.4.3",
     "dotenv": "^2.0.0",
     "ejs": "^2.5.1",

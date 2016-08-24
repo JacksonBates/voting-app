@@ -3,6 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 var mongodb = require( 'mongodb' );
+var ObjectId = require('mongodb').ObjectID;
 var userQueries = require( './controllers/userQueries' );
 var passwordless = require('passwordless');
 // var passwordless = require('../../../');
@@ -15,7 +16,7 @@ router.get( '/results/:POLLID', function( req, res ) {
 	var pollID = req.params.POLLID;
 	var db = req.db;
 	var polls = db.collection( 'polls' );
-	var result = polls.find().toArray(function(err, docs) {
+	var result = polls.find( { _id: ObjectId(pollID) } ).toArray(function(err, docs) {
 		if (err) {
 			console.log("Aw! Snap!");
 		} else {
@@ -23,6 +24,7 @@ router.get( '/results/:POLLID', function( req, res ) {
 			// console.log(docs[0]);
 		}
 	});
+});
 
   // Promise nonsense I do not understand 
 	// 
@@ -40,8 +42,8 @@ router.get( '/results/:POLLID', function( req, res ) {
 	// }, function(err) {
 	// 	console.log(err);
 	// });
-	}
-	);
+	// }
+	// );
 
 /* GET restricted site. */
 router.get( '/restricted', passwordless.restricted(),

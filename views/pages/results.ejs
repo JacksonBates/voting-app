@@ -2,11 +2,77 @@
 <html>
   <head>
     <% include ../partials/header.ejs %>
+    <script src="/scripts/charts.js"></script>
   </head>
   <body>
     <% include ../partials/navbar.ejs %>
     <div class='container'>
-    <%= JSON.stringify(result) %>
+    <% var trimmedUserName = result.creator.replace(/[@].*/, '');
+       var d = new Date(result.createdTime) %>
+    <br><br>
+    <p>id: <%= result._id %></p>
+    <p>poll: <%= result.poll %></p>
+    <p>creator: <%= trimmedUserName %></p>
+    <p>created time: <%= d.toDateString() %></p>
+    <ul>
+    <% for (var i = 0; i < result.options.length; i++) { %>
+      <li>Option: <%= result.options[i] %> | <%= result.voteCount[i] %></li>
+    <% } %>
+    </ul>
+    <!-- Copy pasta the charts -->
+
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+    <% // ejs to wrangle the data for the chart
+    var optionsArray = [];
+    for (var opt = 0; opt < result.options.length; opt++) {
+      optionsArray.push("'" + result.options[opt] + "'");
+    }
+    // ejs to create random colors for the bar chart
+    function randomColor() {
+      var red = Math.floor(Math.random() * 256);
+      var green = Math.floor(Math.random() * 256);
+      var blue = Math.floor(Math.random() * 256);
+      var rColor = "rgba(" + red + "," + green + "," + blue + ", 0.2)";
+      return rColor;
+    }
+
+    var bgColorArray = [];
+    for (var colors = 0; colors < result.options.length; colors++) {
+      bgColorArray.push("'" + randomColor() + "'");
+    }
+    var borderColorArray = [];
+    for (var color = 0; color < bgColorArray.length; color++) {
+      borderColorArray.push(bgColorArray[color].replace(/(0.2)/, '1'));  
+    }
+    %>
+     
+
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [<%- optionsArray %>],
+            datasets: [{
+                label: '# of Votes',
+                data: [<%= result.voteCount %>],
+                backgroundColor: [<%- bgColorArray %>],
+                borderColor: [<%- borderColorArray %>],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+    </script>
+
     </div>
 
     <% include ../partials/scripts.ejs %>
