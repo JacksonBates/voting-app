@@ -10,8 +10,8 @@
       <form action="/sendtoken" method="POST">
       <br>
         <div class='input-field'>
-          <label for="user">Email</label>
-          <input name="user" type="text">
+          <input name="user" type="email" class='validate'>
+          <label for="user" data-error="invalid" data-success="bingo">Email</label>
         </div>
         <br><input class='waves-effect waves-light btn' type="submit" value="Login / Register">
       </form>
