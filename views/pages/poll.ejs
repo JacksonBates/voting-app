@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+  </head>
+  <body>
+    <% console.log(user) %>
+    <% include ../partials/navbar.ejs %>
+    <div class='container'>
+      
+      <h1 class="center-align"></h1>
+      
+      <br>
+      <form action="/poll" method="POST">
+      
+        <div class='input-field'>
+          <input type='text' name='title' class='validate' required="" aria-required="true">
+          <label for='title'>Question</label>
+        </div>
+        
+        <input type='hidden' name='creator' value='<%= user %>'>
+        <input type='hidden' name='dateStamp' id='dateStamp' value='dateStamp will appear here!'>
+     
+        <div class='row'>
+          <div class='input-field col s6 offset-s3'>
+            <input type='text' name='option1' class='validate' required="" aria-required="true">
+            <label for='option1'>Option 1</label>
+          </div>
+        </div>  
+      
+        <div class='row'>
+          <div class='input-field col s6 offset-s3'>
+            <input type='text' name='option2' class='validate' required="" aria-required="true">
+            <label for='option2'>Option 2</label>
+          </div>
+        </div>  
+
+        <div class="input_fields_wrap"></div>
+
+        <ul>
+          <li class="inline-li-buttons"><a href="#" class="add_field_button btn">Add Options</a></li>
+          <li class="inline-li-buttons"><input class='waves-effect waves-light btn' type="submit" value="Create Poll"></li>
+        </ul>
+      </form>
+
+    </div>
+
+    <% include ../partials/scripts.ejs %>
+    <script type='text/javascript'>
+      (function getDate() {
+        var d = new Date();
+        console.log(d);
+        document.getElementById('dateStamp').value = d.toISOString();
+      })();
+
+
+      $(document).ready(function() {
+        // dynamic input boxes code form https://www.sanwebe.com/2013/03/addremove-input-fields-dynamically-with-jquery
+        var max_fields      = 10; //maximum input boxes allowed
+        var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+        var add_button      = $(".add_field_button"); //Add button ID
+        
+        var boxNo = 2; //initlal text box count
+        $(add_button).click(function(e){ //on add input button click
+          e.preventDefault();
+          if(boxNo < max_fields){ //max input box allowed
+            boxNo++; //text box increment
+            $(wrapper).append('<div class="row"><div class="input-field col s6 offset-s3"><input type="text" name="option' + boxNo + '" class="validate" required="" aria-required="true"><label for="option' + boxNo + '">Option ' + boxNo + '</label><a href="#" class="remove_field">Remove</a></div></div>'); //add input box
+          }
+        });
+        
+        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+          e.preventDefault(); $(this).parent('div').parent().remove(); boxNo--;
+        })
+      });
+    </script>
+  </body>
+</html>

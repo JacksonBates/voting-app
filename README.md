@@ -45,7 +45,7 @@ _UNDER DEVELOPMENT_
 + Handles user's vote
 + Redirects to /results
 
-**GET /poll/:POLLID** _(Auth only)_
+**GET /poll** _(Auth only)_
 + Form to create new poll
 + Posts to /poll
 + Unauthenticated users redirect to /sign-in

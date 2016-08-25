@@ -10,3 +10,7 @@
 .poll-list-item {
   padding: 5px;
 }
+
+.inline-li-buttons {
+  display: inline;
+}

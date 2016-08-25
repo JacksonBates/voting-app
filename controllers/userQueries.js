@@ -67,6 +67,39 @@ module.exports = {
       }
     );
     res.redirect( '/results/' + pollID );
+  },
+
+  // GET /poll
+  newPoll: function( req, res ) {
+    res.render( 'pages/poll', { user: req.user } );
+  },
+
+  // POST /poll
+  postPoll: function( req, res ) {
+    var db = req.db;
+    var poll = req.body.title;
+    var creator = req.body.creator;
+    var createdTime = req.body.dateStamp;
+    var optionsArray = [];
+    var voteCountArray = [];
+    for (var item in req.body) {
+      optionsArray.push(req.body[item]);
+    }
+    optionsArray = optionsArray.slice(3);
+    for (var count = 0; count < optionsArray.length; count++) {
+      voteCountArray.push(0);
+    }
+    var polls = db.collection( 'polls' );
+    polls.insert({ 
+      poll: poll,
+      creator: creator,
+      createdTime: createdTime,
+      options: optionsArray,
+      voteCount: voteCountArray,
+      voters: []
+    });
+    res.redirect( '/' );
   }
+
 
 };

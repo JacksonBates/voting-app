@@ -20,6 +20,12 @@ router.get( '/vote/:POLLID', userQueries.getVote );
 // POST vote
 router.post( '/vote', userQueries.postVote );
 
+// GET new poll
+router.get( '/poll', userQueries.newPoll );
+
+// POST new poll
+router.post( '/poll', userQueries.postPoll );
+
 /* GET restricted site. */
 router.get( '/restricted', passwordless.restricted(),
  function( req, res ) {
