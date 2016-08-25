@@ -12,8 +12,20 @@
     <br><br>
     <h1 class="center-align" id="poll-title"><%= poll.poll %></h1>
     <cite class="right"><b>Asker: </b><%= trimmedUserName %>, <time><%= d.toDateString() %></time></cite> 
+    <br>
+    <form action="/vote" method="POST">
+      
+      <% for (var i = 0; i < poll.options.length; i++) { %>
+        <p>
+          <input name="voteOptions" type="radio" id="<%= i %>" value="<%= i %>"/>
+          <label for="<%= i %>"><%= poll.options[i] %></label>
+        </p>
+      <% } %>
+    <input type='hidden' name='pollID' value='<%= poll._id %>'>
+    <input type='hidden' name='username' value='<%= user %>'>
+    <input class='waves-effect waves-light btn' type="submit" value="Cast Vote">
 
-    
+    </form>
 
     </div>
 

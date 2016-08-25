@@ -46,6 +46,27 @@ module.exports = {
         res.render( 'pages/vote', {poll: docs[0], user: req.user });
       }
     });
+  },
+
+  // POST /vote
+  postVote: function( req,res ) {
+    var db = req.db;
+    var pollID = req.body.pollID;
+    var option = req.body.voteOptions;
+    var arrayPositionUpdate = {};
+    var key = 'voteCount.' + option;
+    arrayPositionUpdate[key] = 1;
+    console.log(arrayPositionUpdate, typeof arrayPositionUpdate);
+    var user = req.body.username;
+    var polls = db.collection( 'polls' );
+    polls.update( 
+      { _id: ObjectId( pollID ) }, 
+      { 
+        $inc: arrayPositionUpdate,
+        $push: { "voters" : user } 
+      }
+    );
+    res.redirect( '/results/' + pollID );
   }
 
 };

@@ -17,6 +17,9 @@ router.get( '/results/:POLLID', userQueries.getResult );
 // When testing is complete, remember to reinstate: passwordless.restricted(),
 router.get( '/vote/:POLLID', userQueries.getVote );
 
+// POST vote
+router.post( '/vote', userQueries.postVote );
+
 /* GET restricted site. */
 router.get( '/restricted', passwordless.restricted(),
  function( req, res ) {
