@@ -8,9 +8,12 @@
     <div class='container'>
       <p>
       <form action="/sendtoken" method="POST">
-        Email:
-        <br><input name="user" placeholder="username@example.com" type="text">
-        <br><input type="submit" value="Login / Register">
+      <br>
+        <div class='input-field'>
+          <label for="user">Email</label>
+          <input name="user" type="text">
+        </div>
+        <br><input class='waves-effect waves-light btn' type="submit" value="Login / Register">
       </form>
       </p>
       <ul>

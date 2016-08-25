@@ -24,12 +24,26 @@ module.exports = {
     var pollID = req.params.POLLID;
     var db = req.db;
     var polls = db.collection( 'polls' );
-    var result = polls.find( { _id: ObjectId(pollID) } ).toArray(function(err, docs) {
+    var result = polls.find( { _id: ObjectId( pollID )}).toArray(function(err, docs) {
       if (err) {
         console.log("Aw! Snap!");
       } else {
         res.render( 'pages/results', { result: docs[0], user: req.user });
         // console.log(docs[0]);
+      }
+    });
+  },
+
+  // GET /vote/:POLLID
+  getVote: function( req, res ) {
+    var pollID = req.params.POLLID;
+    var db = req.db;
+    var polls = db.collection( 'polls' );
+    var poll = polls.find( { _id: ObjectId( pollID )}).toArray( function( err, docs ) {
+      if (err) {
+        console.log("Aw! Snap!");
+      } else {
+        res.render( 'pages/vote', {poll: docs[0], user: req.user });
       }
     });
   }

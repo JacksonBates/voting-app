@@ -13,6 +13,10 @@ router.get( '/', userQueries.getPolls );
 // GET results page for selected poll
 router.get( '/results/:POLLID', userQueries.getResult );
 
+// GET voting page for selected poll
+// When testing is complete, remember to reinstate: passwordless.restricted(),
+router.get( '/vote/:POLLID', userQueries.getVote );
+
 /* GET restricted site. */
 router.get( '/restricted', passwordless.restricted(),
  function( req, res ) {

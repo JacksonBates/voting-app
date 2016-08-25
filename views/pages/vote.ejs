@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+    <script src="/scripts/charts.js"></script>
+  </head>
+  <body>
+    <% include ../partials/navbar.ejs %>
+    <div class='container'>
+    <% var trimmedUserName = poll.creator.replace(/[@].*/, '');
+       var d = new Date(poll.createdTime) %>
+    <br><br>
+    <h1 class="center-align" id="poll-title"><%= poll.poll %></h1>
+    <cite class="right"><b>Asker: </b><%= trimmedUserName %>, <time><%= d.toDateString() %></time></cite> 
+
+    
+
+    </div>
+
+    <% include ../partials/scripts.ejs %>
+  </body>
+</html>
