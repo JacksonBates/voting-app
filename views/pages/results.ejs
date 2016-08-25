@@ -15,7 +15,22 @@
 
     <!-- Copy pasta the charts -->
 
-    <canvas id="myChart" width="250" height="100"></canvas>
+    <canvas id="myChart" width="10" height="3"></canvas>
+    <% // ejs to show vote link to authenticated users, or not
+    if (user) {
+      if (result.voters.indexOf(user) >= 0) { 
+    %>
+        <p>You have already voted in this poll, thanks!</p>   
+    <% 
+      } else { 
+    %>
+      <p>You have not voted in this poll, yet. <a href="/restricted">Click here to vote</a>.</p>
+    <% 
+      }
+    } else {
+    %>
+      <p>You must log in to vote. <a href="/login">Click here to login</a>.</p>
+    <% } %>
     <script>
     <% // ejs to wrangle the data for the chart
     var optionsArray = [];
