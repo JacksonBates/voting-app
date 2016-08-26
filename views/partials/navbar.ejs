@@ -4,9 +4,10 @@
       <ul id="nav-mobile" class="right">
         <% if(user) { 
           var trimmedUserName = user.replace(/[@].*/, ''); %>
-        <li><%= trimmedUserName %></li>
+        <li>Hi, <%= trimmedUserName %>! </li>
         <li><a href="/logout">(logout)</a></li>
         <li><a href="/poll">New Poll</a></li>
+        <li><a href="/my-polls">My Polls</a></li>
         <% } else { %>
         <li><a href="/login">Login</a></li>
         <% } %>

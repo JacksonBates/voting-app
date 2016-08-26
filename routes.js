@@ -15,19 +15,22 @@ router.get( '/results/:POLLID', userQueries.getResult );
 
 // GET voting page for selected poll
 // When testing is complete, remember to reinstate: passwordless.restricted(),
-router.get( '/vote/:POLLID', userQueries.getVote );
+router.get( '/vote/:POLLID', passwordless.restricted( { failureRedirect: '/login' } ), userQueries.getVote );
 
 // POST vote
 router.post( '/vote', userQueries.postVote );
 
 // GET new poll
-router.get( '/poll', userQueries.newPoll );
+router.get( '/poll', passwordless.restricted( { failureRedirect: '/login', }), userQueries.newPoll );
 
 // POST new poll
 router.post( '/poll', userQueries.postPoll );
 
+// GET my polls
+router.get( '/my-polls', passwordless.restricted( { failureRedirect: '/login' } ), userQueries.getUserPolls );
+
 /* GET restricted site. */
-router.get( '/restricted', passwordless.restricted(),
+router.get( '/restricted', passwordless.restricted( { failureRedirect: '/login' } ),
  function( req, res ) {
   res.render( 'pages/restricted' , { user: req.user });
 });

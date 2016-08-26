@@ -41,7 +41,7 @@ module.exports = {
     var polls = db.collection( 'polls' );
     var poll = polls.find( { _id: ObjectId( pollID )}).toArray( function( err, docs ) {
       if (err) {
-        console.log("Aw! Snap!");
+        console.log( "Aw! Snap!" );
       } else {
         res.render( 'pages/vote', {poll: docs[0], user: req.user });
       }
@@ -56,7 +56,7 @@ module.exports = {
     var arrayPositionUpdate = {};
     var key = 'voteCount.' + option;
     arrayPositionUpdate[key] = 1;
-    console.log(arrayPositionUpdate, typeof arrayPositionUpdate);
+    console.log( arrayPositionUpdate, typeof arrayPositionUpdate );
     var user = req.body.username;
     var polls = db.collection( 'polls' );
     polls.update( 
@@ -97,8 +97,26 @@ module.exports = {
       options: optionsArray,
       voteCount: voteCountArray,
       voters: []
+    }, function( err, docs ) {
+      if (err) {
+        console.log( 'Aw, snap!' );
+      } else {
+        res.redirect( 'pages/vote', { poll: docs[0], user: req.user } );
+      }
     });
-    res.redirect( '/' );
+  },
+
+  getUserPolls: function( req, res ) {
+    var db = req.db;
+    var user = req.user;
+    var polls = db.collection( 'polls' );
+    polls.find( { creator: user } ).toArray( function( err, docs ) {
+      if (err) {
+        console.log( 'Aw, snap!' ); 
+      } else {
+        res.render( 'pages/my', { user: user, polls: docs } )
+      }
+    })
   }
 
 

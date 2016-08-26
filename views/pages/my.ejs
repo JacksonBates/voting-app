@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+  </head>
+  <body>
+    <% include ../partials/navbar.ejs %>
+    <div class='container'>
+    <% var trimmedUserName = user.replace(/[@].*/, ''); %>
+    <br><br>
+    <h1 class="center-align">Your polls:</h1>
+    
+    <div class="collection">
+
+    <% for (var i = 0; i < polls.length; i++) { %>
+      <a class='collection-item' href='/results/<%= polls[i]._id %>'><%= polls[i].poll %></a>
+    <% } %>
+    
+    </div>
+
+    <% include ../partials/scripts.ejs %>
+  
