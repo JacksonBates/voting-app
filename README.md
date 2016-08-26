@@ -65,4 +65,9 @@ _UNDER DEVELOPMENT_
   + /vote
 
 **GET /mypolls**
-+ 
++ Lists users polls
++ Links to
+  + /
+  + /poll
+  + /results/:POLLID
+  + /logout

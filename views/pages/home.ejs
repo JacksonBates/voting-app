@@ -6,11 +6,11 @@
   <body>
     <% include ../partials/navbar.ejs %>
     <div class='container'>
-    <p>Choose a poll to vote in from the options below, or <a href="/restricted">create a new one</a></p>
-      <div class='poll-list'>
+    <p class='center'>Choose a poll to vote in from the options below, or <a href="/poll">create a new one</a></p>
+      <div class='collection'>
                
         <% for( var i = 0; i < docs.length; i++ ) { %>
-        <div class='center-align poll-list-item'><a href="/results/<%= docs[i]._id %>"><%= docs[i].poll %></a></div>
+        <a class='collection-item' href="/results/<%= docs[i]._id %>"><%= docs[i].poll %></a>
         <% } %>
 
       </div>
