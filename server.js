@@ -76,7 +76,7 @@ mongo.connect( url, function( err, db ) {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
     app.use(cookieParser());
-    app.use(expressSession({secret: '42', saveUninitialized: false, resave: false}));
+    app.use(expressSession({secret: '42', saveUninitialized: false, resave: false, cookie: { maxAge: 60*60*24*365*10 }}));
     app.use( express.static( path.join( __dirname, '/public' )));
     
     // Passwordless middleware
