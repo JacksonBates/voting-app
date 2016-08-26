@@ -13,7 +13,33 @@
     <div class="collection">
 
     <% for (var i = 0; i < polls.length; i++) { %>
-      <a class='collection-item' href='/results/<%= polls[i]._id %>'><%= polls[i].poll %></a>
+      <% // ejs to determine current winner in each poll 
+        var winner = "heyo!"; 
+        var voteCount = polls[i].voteCount;
+        var max = Math.max.apply(null, voteCount); 
+        
+        function moreThanOneMax(array) {
+          var count = 0;
+          for (var i = 0; i < array.length; i++) {
+            if (array[i] === max) {
+              count++;
+            }
+          }
+          if (count > 1) {
+            return true;
+          }
+          return false;
+        }
+
+        if (moreThanOneMax(voteCount)) {
+          winner = "(no clear winner yet)";
+        } else {
+          var winnerIndex = voteCount.indexOf(max);
+          var winnerOption = polls[i].options[winnerIndex];
+          winner = "(" + winnerOption + " is ahead!)";
+        }
+      %>
+      <a class='collection-item' href='/results/<%= polls[i]._id %>'><%= polls[i].poll + " " + winner %></a>
     <% } %>
     
     </div>
