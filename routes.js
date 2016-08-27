@@ -34,7 +34,7 @@ router.post( '/delete/:POLLID', passwordless.restricted( {failureRedirect: '/log
 
 // GET privacy
 router.get( '/privacy', function( req, res ) { 
-	res.render( 'pages/privacy' );
+	res.render( 'pages/privacy', { user: req.user } );
 })
 
 /* GET restricted site. */
