@@ -14,8 +14,8 @@
       <form action="/poll" method="POST">
       
         <div class='input-field'>
-          <input type='text' name='title' class='validate' required="" aria-required="true">
           <label for='title'>Question</label>
+          <input type='text' name='title' class='validate' required="" aria-required="true">
         </div>
         
         <input type='hidden' name='creator' id='creator' value='<%= user %>'>
@@ -23,15 +23,15 @@
      
         <div class='row'>
           <div class='input-field col s6 offset-s3'>
-            <input type='text' name='option1' class='validate' required="" aria-required="true">
             <label for='option1'>Option 1</label>
+            <input type='text' name='option1' class='validate' required="" aria-required="true">
           </div>
         </div>  
       
         <div class='row'>
           <div class='input-field col s6 offset-s3'>
-            <input type='text' name='option2' class='validate' required="" aria-required="true">
             <label for='option2'>Option 2</label>
+            <input type='text' name='option2' class='validate' required="" aria-required="true">
           </div>
         </div>  
 
@@ -65,7 +65,7 @@
           e.preventDefault();
           if(boxNo < max_fields){ //max input box allowed
             boxNo++; //text box increment
-            $(wrapper).append('<div class="row"><div class="input-field col s6 offset-s3"><input type="text" name="option' + boxNo + '" class="validate" required="" aria-required="true"><label for="option' + boxNo + '">Option ' + boxNo + '</label><a href="#" class="remove_field">Remove</a></div></div>'); //add input box
+            $(wrapper).append('<div class="row"><div class="input-field col s6 offset-s3"><label for="option' + boxNo + '">Option ' + boxNo + '</label><input type="text" name="option' + boxNo + '" class="validate" required="" aria-required="true"><a href="#" class="remove_field">Remove</a></div></div>'); //add input box
           }
         });
         
