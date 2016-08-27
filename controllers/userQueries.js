@@ -101,7 +101,7 @@ module.exports = {
       if (err) {
         console.log( 'Aw, snap!' );
       } else {
-        res.redirect( 'pages/vote', { poll: docs[0], user: req.user } );
+        res.redirect( '/my-polls' );
       }
     });
   },
@@ -117,6 +117,15 @@ module.exports = {
         res.render( 'pages/my', { user: user, polls: docs } )
       }
     })
+  },
+
+  deletePoll: function( req, res ) {
+    var db = req.db;
+    var pollID = req.body.pollID;
+    var polls = db.collection( 'polls' );
+    polls.deleteOne( { _id: ObjectId( pollID )});
+    res.redirect( '/my-polls' );
+
   }
 
 

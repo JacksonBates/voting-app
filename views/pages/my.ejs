@@ -39,7 +39,13 @@
           winner = "(" + winnerOption + " is ahead!)";
         }
       %>
-      <a class='collection-item' href='/results/<%= polls[i]._id %>'><%= polls[i].poll + " " + winner %></a>
+      <div class='collection-item hoverable row valign-wrapper'>
+        <a class='col s11 valign' href='/results/<%= polls[i]._id %>'><%= polls[i].poll + " " + winner %></a>
+        <form action='/delete/<%= polls[i]._id %>' method='post'>
+          <input type='hidden' name='pollID' value='<%= polls[i]._id %>'>
+          <button class='secondary-content btn' title="delete" type='submit'><i class='material-icons'>delete</i></button>
+        </form>
+      </div>
     <% } %>
     
     </div>

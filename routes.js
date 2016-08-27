@@ -27,7 +27,10 @@ router.get( '/poll', passwordless.restricted( { failureRedirect: '/login', }), u
 router.post( '/poll', userQueries.postPoll );
 
 // GET my polls
-router.get( '/my-polls', passwordless.restricted( { failureRedirect: '/login' } ), userQueries.getUserPolls );
+router.get( '/my-polls', passwordless.restricted( { failureRedirect: '/login' }), userQueries.getUserPolls );
+
+// POST delete poll
+router.post( '/delete/:POLLID', passwordless.restricted( {failureRedirect: '/login' }), userQueries.deletePoll );
 
 /* GET restricted site. */
 router.get( '/restricted', passwordless.restricted( { failureRedirect: '/login' } ),

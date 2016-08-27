@@ -14,3 +14,7 @@
 .inline-li-buttons {
   display: inline;
 }
+
+.hoverable:hover {
+  background-color: #DDD;
+}
