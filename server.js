@@ -1,4 +1,4 @@
-require( 'dotenv' ).config();
+// require( 'dotenv' ).config(); Toggle comment off for Heroku deploy, on for local dev
 var mongodb = require( 'mongodb' );
 var mongo = mongodb.MongoClient;
 var path = require( 'path' );
