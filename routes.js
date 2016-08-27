@@ -74,7 +74,7 @@ router.post('/sendtoken',
 
 router.get ( '*' , function( req, res ) {
 	res.status( 404 );
-	res.render( 'pages/not-found' );
+	res.render( 'pages/not-found', { user: req.user } );
 	res.end();
 
 })
