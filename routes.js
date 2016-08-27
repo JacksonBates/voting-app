@@ -32,6 +32,11 @@ router.get( '/my-polls', passwordless.restricted( { failureRedirect: '/login' })
 // POST delete poll
 router.post( '/delete/:POLLID', passwordless.restricted( {failureRedirect: '/login' }), userQueries.deletePoll );
 
+// GET privacy
+router.get( '/privacy', function( req, res ) { 
+	res.render( 'pages/privacy' );
+})
+
 /* GET restricted site. */
 router.get( '/restricted', passwordless.restricted( { failureRedirect: '/login' } ),
  function( req, res ) {
@@ -66,5 +71,12 @@ router.post('/sendtoken',
 	function(req, res) {
   		res.render('pages/sent', { user: req.user });
 });
+
+router.get ( '*' , function( req, res ) {
+	res.status( 404 );
+	res.render( 'pages/not-found' );
+	res.end();
+
+})
 
 module.exports = router;
