@@ -97,11 +97,12 @@ module.exports = {
       options: optionsArray,
       voteCount: voteCountArray,
       voters: []
-    }, function( err, docs ) {
+    }, function( err, doc ) {
       if (err) {
         console.log( 'Aw, snap!' );
       } else {
-        res.redirect( '/my-polls' );
+        console.log(doc);
+      res.redirect( '/vote/' + doc.insertedIds[0] );
       }
     });
   },
