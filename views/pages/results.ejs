@@ -5,6 +5,7 @@
     <script src="/scripts/charts.js"></script>
   </head>
   <body>
+    <% include ../partials/results-share-fb-code.ejs %>
     <% include ../partials/navbar.ejs %>
     <div class='container'>
     <% var trimmedUserName = result.creator.replace(/[@].*/, '');
@@ -20,11 +21,13 @@
     if (user) {
       if (result.voters.indexOf(user) >= 0) { 
     %>
-        <p>You have already voted in this poll, thanks!</p>   
+        <p>You have already voted in this poll, thanks!</p>
+        <div class="fb-share-button" data-href="https://pollz.herokuapp.com/results/<%= result._id %>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpollz.herokuapp.com%2Fresults%2F<%= result._id %>&amp;src=sdkpreparse">Share</a></div>  
     <% 
       } else { 
     %>
       <p>You have not voted in this poll, yet. <a href="/vote/<%= result._id %>">Click here to vote</a>.</p>
+      <div class="fb-share-button" data-href="https://pollz.herokuapp.com/results/<%= result._id %>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpollz.herokuapp.com%2Fresults%2F<%= result._id %>&amp;src=sdkpreparse">Share</a></div>
     <% 
       }
     } else {
