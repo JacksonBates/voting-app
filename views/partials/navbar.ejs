@@ -1,7 +1,19 @@
 <nav>
     <div class="nav-wrapper">
-      <a href="/" class="brand-logo left">Pollz</a>
-      <ul id="nav-mobile" class="right">
+      <a href="/" class="brand-logo">Pollz</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <% if(user) { 
+          var trimmedUserName = user.replace(/[@].*/, ''); %>
+        <li>Hi, <%= trimmedUserName %>! </li>
+        <li><a href="/logout">(logout)</a></li>
+        <li><a href="/poll">New Poll</a></li>
+        <li><a href="/my-polls">My Polls</a></li>
+        <% } else { %>
+        <li><a href="/login">Login</a></li>
+        <% } %>
+      </ul>
+      <ul class="side-nav" id='mobile-demo'>
         <% if(user) { 
           var trimmedUserName = user.replace(/[@].*/, ''); %>
         <li>Hi, <%= trimmedUserName %>! </li>
