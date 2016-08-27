@@ -6,6 +6,9 @@
   <body>
     <% include ../partials/navbar.ejs %>
     <div class='container'>
+      <p>Pollz relies on passwordless authentication to improve security. You can read more about that here: <a href="https://medium.com/@ninjudd/passwords-are-obsolete-9ed56d483eb#.f8rwes61t">Passwords are obsolete</a>.</p>
+      <p>If you are concerned about providing a valid email address, maybe our <a href="#">Privacy Policy</a> will reassure you? Don't worry, it's short and in plain English! Alternatively, you may prefer to use a temporary, <a href="http://www.throwawaymail.com/">a disposable email inbox</a>. That's cool, too. We're just happy to have you join in!</p>
+
       <p>
       <form action="/sendtoken" method="POST">
       <br>
@@ -19,9 +22,6 @@
       <ul>
         <li>
           <a href='/'>Back to homepage</a>
-        </li>
-        <li>
-          <a href='/restricted'>Restricted page</a>
         </li>
       </ul>
     </div>
