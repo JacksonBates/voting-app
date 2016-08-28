@@ -2,6 +2,23 @@
 <html>
   <head>
     <% include ../partials/header.ejs %>
+    <script>
+      function validateForm() {
+        var options = document.forms["voteForm"]["voteOptions"].value;
+        var newOption = document.forms["voteForm"]["newOption"].value;
+        if (!options && !newOption) {
+          Materialize.toast("You must select one option, or create a new one", 4000);
+          return false;
+        } else if (
+          (options && newOption) {
+            Materialize.toast("You cannot select an existing option AND create a new one together.\nPlease pick one.", 4000);
+            return false;
+          } else {
+            return true;
+          }
+        )
+      }
+    </script>
   </head>
   <body>
     <% include ../partials/navbar.ejs %>
@@ -29,23 +46,6 @@
     </form>
 
     </div>
-    <script>
-      function validateForm() {
-        var options = document.forms["voteForm"]["voteOptions"].value;
-        var newOption = document.forms["voteForm"]["newOption"].value;
-        if (!options && !newOption) {
-          Materialize.toast("You must select one option, or create a new one", 4000);
-          return false;
-        } else if (
-          (options && newOption) {
-            Materialize.toast("You cannot select an existing option AND create a new one together.\nPlease pick one.", 4000);
-            return false;
-          } else {
-            return true;
-          }
-        )
-      }
-    </script>
     <% include ../partials/scripts.ejs %>
   </body>
 </html>
