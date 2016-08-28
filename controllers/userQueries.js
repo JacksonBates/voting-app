@@ -51,22 +51,42 @@ module.exports = {
   // POST /vote
   postVote: function( req,res ) {
     var db = req.db;
+    var user = req.body.username;
     var pollID = req.body.pollID;
     var option = req.body.voteOptions;
-    var arrayPositionUpdate = {};
-    var key = 'voteCount.' + option;
-    arrayPositionUpdate[key] = 1;
-    console.log( arrayPositionUpdate, typeof arrayPositionUpdate );
-    var user = req.body.username;
+    var newOption = req.body.newOption;
     var polls = db.collection( 'polls' );
-    polls.update( 
-      { _id: ObjectId( pollID ) }, 
-      { 
-        $inc: arrayPositionUpdate,
-        $push: { "voters" : user } 
-      }
-    );
-    res.redirect( '/results/' + pollID );
+
+    if (!option && !newOption) {
+      // if no options 
+      // this should be handled by client side validation
+    } else if (option && newOption) {
+      // if custom and original selected
+      // this should be handled by client side validation
+    } else if (option && !custom) {
+      // if original option chosen
+      var arrayPositionUpdate = {};
+      var key = 'voteCount.' + option;
+      arrayPositionUpdate[key] = 1;
+      console.log( arrayPositionUpdate, typeof arrayPositionUpdate );
+      polls.update( 
+        { _id: ObjectId( pollID ) }, 
+        { 
+          $inc: arrayPositionUpdate,
+          $push: { "voters" : user } 
+        }
+      );
+      res.redirect( '/results/' + pollID );
+    } else {
+      // if custom option chosen
+      polls.update( 
+        { _id: ObjectId( pollID ) }, 
+        { 
+          $push: { "voters" : user, "options" : newOption, "voteCount" : 1 } 
+        }
+      );
+      res.redirect( '/results/' + pollID );
+    }
   },
 
   // GET /poll

@@ -12,14 +12,16 @@
     <h1 class="center-align" id="poll-title"><%= poll.poll %></h1>
     <cite class="right"><b>Asker: </b><%= trimmedUserName %>, <time><%= d.toDateString() %></time></cite> 
     <br>
-    <form action="/vote" method="POST">
+    <form name="voteForm" action="/vote" method="POST" onsubmit="return validateForm()">
       
       <% for (var i = 0; i < poll.options.length; i++) { %>
         <p>
-          <input name="voteOptions" type="radio" id="<%= i %>" value="<%= i %>"/>
           <label for="<%= i %>"><%= poll.options[i] %></label>
+          <input name="voteOptions" type="radio" id="<%= i %>" value="<%= i %>"/>
         </p>
       <% } %>
+    <label for='newOption'>Custom Option (vote responsibly!)</label>
+    <input name='newOption' id='newOption'>
     <input type='hidden' name='pollID' value='<%= poll._id %>'>
     <input type='hidden' name='username' value='<%= user %>'>
     <input class='waves-effect waves-light btn' type="submit" value="Cast Vote">
@@ -27,7 +29,23 @@
     </form>
 
     </div>
-
+    <script>
+      function validateForm() {
+        var options = document.forms["voteForm"]["voteOptions"].value;
+        var newOption = document.forms["voteForm"]["newOption"].value;
+        if (!options && !newOption) {
+          Materialize.toast("You must select one option, or create a new one", 4000);
+          return false;
+        } else if (
+          (options && newOption) {
+            Materialize.toast("You cannot select an existing option AND create a new one together.\nPlease pick one.", 4000);
+            return false;
+          } else {
+            return true;
+          }
+        )
+      }
+    </script>
     <% include ../partials/scripts.ejs %>
   </body>
 </html>
