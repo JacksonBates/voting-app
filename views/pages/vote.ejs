@@ -10,7 +10,7 @@
           Materialize.toast("You must select one option, or create a new one", 4000);
           return false;
         } else if (options && newOption) {
-          Materialize.toast("You cannot select an existing option AND create a new one together. Please pick one.", 4000);
+          Materialize.toast("You cannot select an existing option AND create a new one together.\nPlease pick one.", 4000);
           var ele = document.getElementsByName("voteOptions");
           for( var radioIndex = 0; radioIndex < ele.length ; radioIndex++ )
             ele[radioIndex].checked = false;

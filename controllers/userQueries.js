@@ -60,11 +60,13 @@ module.exports = {
     if (!option && !newOption) {
       // if no options 
       // this should be handled by client side validation
-      console.log('no option, no custom');      
+      console.log('no option, no custom');
+      res.send('Well, this is embarrassing. That error was supposed to be picked up by our validation script. Try again, but pick one option.');      
     } else if (option && newOption) {
       // if custom and original selected
       // this should be handled by client side validation
-      console.log('option, custom');      
+      console.log('option, custom');
+      res.send('Well, this is embarrassing. That error was supposed to be picked up by our validation script. Try again, but pick one option.');
     } else if (option && !newOption) {
       // if original option chosen
       console.log('option, no custom');
