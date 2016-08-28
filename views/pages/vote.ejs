@@ -11,7 +11,9 @@
           return false;
         } else if (options && newOption) {
           Materialize.toast("You cannot select an existing option AND create a new one together. Please pick one.", 4000);
-          this.checked = false;
+          var ele = document.getElementsByName("voteOptions");
+          for( var radioIndex = 0; radioIndex < ele.length ; radioIndex++ )
+            ele[radioIndex].checked = false;
           return false;
         } else {
           return true;
