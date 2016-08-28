@@ -65,7 +65,7 @@ module.exports = {
       // if custom and original selected
       // this should be handled by client side validation
       console.log('option, custom');      
-    } else if (option && !custom) {
+    } else if (option && !newOption) {
       // if original option chosen
       console.log('option, no custom');
       var arrayPositionUpdate = {};
