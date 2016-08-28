@@ -16,8 +16,8 @@
       
       <% for (var i = 0; i < poll.options.length; i++) { %>
         <p>
-          <label for="<%= i %>"><%= poll.options[i] %></label>
           <input name="voteOptions" type="radio" id="<%= i %>" value="<%= i %>"/>
+          <label for="<%= i %>"><%= poll.options[i] %></label>
         </p>
       <% } %>
     <label for='newOption'>Custom Option (vote responsibly!)</label>

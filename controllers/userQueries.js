@@ -60,11 +60,14 @@ module.exports = {
     if (!option && !newOption) {
       // if no options 
       // this should be handled by client side validation
+      console.log('no option, no custom');      
     } else if (option && newOption) {
       // if custom and original selected
       // this should be handled by client side validation
+      console.log('option, custom');      
     } else if (option && !custom) {
       // if original option chosen
+      console.log('option, no custom');
       var arrayPositionUpdate = {};
       var key = 'voteCount.' + option;
       arrayPositionUpdate[key] = 1;
@@ -79,6 +82,7 @@ module.exports = {
       res.redirect( '/results/' + pollID );
     } else {
       // if custom option chosen
+      console.log('no option, custom');      
       polls.update( 
         { _id: ObjectId( pollID ) }, 
         { 
