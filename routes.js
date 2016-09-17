@@ -55,18 +55,12 @@ router.get('/logout', passwordless.logout(),
 });
 
 /* POST login screen. */
-router.post('/sendtoken', 
+router.post('/sendtoken',
+  urlencodedParser, 
 	passwordless.requestToken(
 		// Simply accept every user
 		function(user, delivery, callback) {
-			callback(null, user);
-			// usually you would want something like:
-			// User.find({email: user}, callback(ret) {
-			// 		if(ret)
-			// 			callback(null, ret.id)
-			// 		else
-			// 			callback(null, null)
-			// })
+			callback(null, user)
 		}),
 	function(req, res) {
   		res.render('pages/sent', { user: req.user });

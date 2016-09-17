@@ -1,4 +1,4 @@
-// require( 'dotenv' ).config(); Toggle comment off for Heroku deploy, on for local dev
+//require( 'dotenv' ).config(); //Toggle comment off for Heroku deploy, on for local dev
 var mongodb = require( 'mongodb' );
 var mongo = mongodb.MongoClient;
 var path = require( 'path' );
@@ -7,9 +7,7 @@ var cookieParser = require( 'cookie-parser' );
 var expressSession = require( 'express-session' );
 var express = require( 'express' );
 var app = express();
-var bodyParser = require('body-parser');
 var passwordless = require('passwordless');
-//var passwordless = require('../../');
 
 var MongoStore = require('passwordless-mongostore');
 var email   = require("emailjs");
@@ -73,8 +71,6 @@ mongo.connect( url, function( err, db ) {
     
     // Standard express setup
     app.use(logger('dev'));
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({extended: false}));
     app.use(cookieParser());
     app.use(expressSession({secret: '42', saveUninitialized: false, resave: false, cookie: { maxAge: 60*60*24*365*10 }}));
     app.use( express.static( path.join( __dirname, '/public' )));
